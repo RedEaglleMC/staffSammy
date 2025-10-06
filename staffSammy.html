@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff - Servidor da Sammyzuka</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 50px 40px;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 50px;
+            font-size: 1.1em;
+        }
+
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+
+        .staff-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            padding: 30px 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .staff-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .staff-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .staff-card:hover::before {
+            opacity: 1;
+        }
+
+        .staff-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .staff-title {
+            color: white;
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .staff-description {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .btn-apply {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-apply:hover {
+            background: #f0f0f0;
+            transform: scale(1.05);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .staff-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌟 Servidor da Sammyzuka</h1>
+        <p class="subtitle">Solicitação de Staff - Escolha a área que deseja se candidatar</p>
+
+        <div class="staff-grid">
+            <div class="staff-card" onclick="openForm('parceria')">
+                <div class="staff-icon">🤝</div>
+                <div class="staff-title">Staff Parceria</div>
+                <div class="staff-description">Responsável por estabelecer e gerenciar parcerias estratégicas</div>
+                <button class="btn-apply">Candidatar-se</button>
+            </div>
+
+            <div class="staff-card" onclick="openForm('divulgacao')">
+                <div class="staff-icon">📢</div>
+                <div class="staff-title">Staff Divulgação</div>
+                <div class="staff-description">Promover e divulgar conteúdo em diversas plataformas</div>
+                <button class="btn-apply">Candidatar-se</button>
+            </div>
+
+            <div class="staff-card" onclick="openForm('reviver')">
+                <div class="staff-icon">💬</div>
+                <div class="staff-title">Staff Reviver Chat</div>
+                <div class="staff-description">Manter o chat ativo e engajar a comunidade</div>
+                <button class="btn-apply">Candidatar-se</button>
+            </div>
+
+            <div class="staff-card" onclick="openForm('suporte')">
+                <div class="staff-icon">🛟</div>
+                <div class="staff-title">Staff Suporte/Ajuda</div>
+                <div class="staff-description">Auxiliar membros e resolver dúvidas da comunidade</div>
+                <button class="btn-apply">Candidatar-se</button>
+            </div>
+
+            <div class="staff-card" onclick="openForm('lider-staff')">
+                <div class="staff-icon">👑</div>
+                <div class="staff-title">Líder de Staffs</div>
+                <div class="staff-description">Coordenar e liderar toda a equipe de staff</div>
+                <button class="btn-apply">Candidatar-se</button>
+            </div>
+
+            <div class="staff-card" onclick="openForm('lider-parceria')">
+                <div class="staff-icon">🎯</div>
+                <div class="staff-title">Líder de Parceria</div>
+                <div class="staff-description">Supervisionar e otimizar todas as parcerias</div>
+                <button class="btn-apply">Candidatar-se</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            💼 Faça parte da equipe do Servidor da Sammyzuka e ajude a crescer nossa comunidade no Discord!
+        </div>
+    </div>
+
+    <script>
+        function openForm(staffType) {
+            // Aqui você adiciona os links dos seus formulários
+            const formLinks = {
+                'parceria': 'https://forms.gle/seu-link-parceria',
+                'divulgacao': 'https://forms.gle/seu-link-divulgacao',
+                'reviver': 'https://forms.gle/seu-link-reviver',
+                'suporte': 'https://forms.gle/seu-link-suporte',
+                'lider-staff': 'https://forms.gle/seu-link-lider-staff',
+                'lider-parceria': 'https://forms.gle/seu-link-lider-parceria'
+            };
+
+            // Redireciona para o formulário correspondente
+            if (formLinks[staffType]) {
+                window.open(formLinks[staffType], '_blank');
+            } else {
+                alert('Link do formulário ainda não configurado para esta área!');
+            }
+        }
+    </script>
+</body>
+</html>
